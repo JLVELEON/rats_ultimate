@@ -4,9 +4,11 @@ from utils.file_utils import scan_series_folder
 from utils.state_manager import load_progress, save_progress
 from logic.rats_mode1 import get_random_episode
 from logic.rats_mode2 import get_next_episode as get_ordered_episode
+from routes.rats_routes import router as rats_router
 
 app = FastAPI()
 
+app.include_router(rats_router, prefix="/rats")
 BASE_PATH = Path("series")
 PROGRESS_PATH = Path("data/progress.json")
 
